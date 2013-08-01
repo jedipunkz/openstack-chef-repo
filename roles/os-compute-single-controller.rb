@@ -14,6 +14,7 @@ run_list(
   "role[os-dashboard]",
   "recipe[openstack-compute::conductor]",
   "recipe[openstack-block-storage::volume]",
+  "recipe[openstack-block-storage::scheduler]",
   "recipe[openstack-block-storage::identity_registration]",
   "recipe[openstack-compute::identity_registration]",
   "recipe[openstack-image::identity_registration]",
