@@ -2,24 +2,36 @@ berksfile:
     options: '--no-freeze --halt-on-frozen'
 
 cookbooks:
-# - openstack-common:
-# - openstack-block-storage:
-# - openstack-compute:
-# - openstack-dashboard:
-# - openstack-identity:
-# - openstack-image:
-# - openstack-metering:
-# - openstack-network:
-# - openstack-object-storage:
-# - openstack-ops-database:
-# - openstack-ops-messaging:
+- apache2:
+- apt:
+- aws:
+- build-essential:
+- database:
+- erlang:
+- mysql:
+- openssl:
+- postgresql:
+- rabbitmq:
+- xfs:
+- yum:
+- openstack-common:
+- openstack-block-storage:
+- openstack-compute:
+- openstack-dashboard:
+- openstack-identity:
+- openstack-image:
+#- openstack-metering:
+- openstack-network:
+#- openstack-object-storage:
+- openstack-ops-database:
+- openstack-ops-messaging:
 
 roles:
 - os-base:
-#- os-ops-messaging:
-#- os-ops-database:
-#- allinone-compute:
-#- os-compute-single-controller:
+- os-ops-messaging:
+- os-ops-database:
+- allinone-compute:
+- os-compute-single-controller:
 - os-block-storage-api:
 - os-block-storage-scheduler:
 - os-block-storage-worker:
@@ -41,7 +53,7 @@ roles:
 - os-image-registry:
 - os-image:
 - os-image:
-#- os-network:
+- os-network:
 #- os-object-storage-account:
 #- os-object-storage-container:
 #- os-object-storage-management:
@@ -50,11 +62,16 @@ roles:
 #- os-object-storage:
 
 environments:
-- example:
+- opstenv01:
 
 data bags:
 
 nodes:
+- 10.200.9.82:
+    run_list: role[allinone-compute]
+    options: -N opstchef-all -x root -E opstenv01 -i ~/.ssh/id_rsa-non
+    
+
 # - ubuntu2-1204.vm:
 #     run_list: role[os-ops-messaging],role[os-ops-database],role[os-identity],role[os-image]
 #     options: -i ~/.ssh/mray.pem -x mray --sudo -E example

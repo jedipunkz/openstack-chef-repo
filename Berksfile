@@ -19,9 +19,16 @@ cookbook 'openstack-compute', github: 'stackforge/cookbook-openstack-compute'
 cookbook 'openstack-dashboard', github: 'stackforge/cookbook-openstack-dashboard'
 cookbook 'openstack-identity', github: 'stackforge/cookbook-openstack-identity'
 cookbook 'openstack-image', github: 'stackforge/cookbook-openstack-image'
-#cookbook 'openstack-metering', github: 'stackforge/cookbook-openstack-metering'
-#cookbook 'openstack-network', github: 'stackforge/cookbook-openstack-network'
-#cookbook 'openstack-object-storage', github: "stackforge/cookbook-openstack-object-storage"
-#cookbook 'openstack-ops-database', github: 'stackforge/cookbook-openstack-ops-database'
-#cookbook 'openstack-ops-messaging', github: 'stackforge/cookbook-openstack-ops-messaging'
+cookbook 'openstack-network', github: 'stackforge/cookbook-openstack-network'
+cookbook 'openstack-ops-database', github: 'stackforge/cookbook-openstack-ops-database'
+cookbook 'openstack-ops-messaging', github: 'stackforge/cookbook-openstack-ops-messaging'
 
+#cookbook 'openstack-metering', github: 'stackforge/cookbook-openstack-metering'
+#cookbook 'openstack-object-storage', github: "stackforge/cookbook-openstack-object-storage"
+
+# Start of OpenStack Cookbooks
+#cookbook "openstack-common", path: "/tmp/cbs/cookbook-openstack-common"
+#cookbook "openstack-compute", path: "/tmp/cbs/cookbook-openstack-compute"
+#cookbook "openstack-block-storage", path: "/tmp/cbs/cookbook-openstack-block-storage"
+#cookbook "openstack-image", path: "/tmp/cbs/cookbook-openstack-image"
+#cookbook "openstack-identity", path: "/tmp/cbs/cookbook-openstack-identity"
