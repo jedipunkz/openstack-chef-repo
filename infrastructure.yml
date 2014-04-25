@@ -6,72 +6,97 @@ cookbooks:
 - apt:
 - aws:
 - build-essential:
+- chef_handler:
 - database:
+- dmg:
 - erlang:
+- git:
+- homebrew:
+- iptables:
+- logrotate:
+- memcached:
 - mysql:
 - openssl:
-- postgresql:
-- rabbitmq:
-- xfs:
-- yum:
-- openstack-common:
 - openstack-block-storage:
+- openstack-common:
 - openstack-compute:
 - openstack-dashboard:
 - openstack-identity:
 - openstack-image:
-#- openstack-metering:
 - openstack-network:
-#- openstack-object-storage:
-- openstack-ops-database:
+- openstack-object-storage:
 - openstack-ops-messaging:
+- openstack-ops-database:
+- openstack-orchestration:
+- openstack-telemetry:
+- pacman:
+- postgresql:
+- python:
+- rabbitmq:
+- runit:
+- selinux:
+- statsd:
+- windows:
+- xfs:
+- yum:
+- yum-epel:
+- yum-erlang_solutions:
 
 roles:
-- os-base:
-- os-ops-messaging:
-- os-ops-database:
 - allinone-compute:
 - os-compute-single-controller:
+- os-base:
+- os-ops-caching:
+- os-ops-messaging:
+- os-ops-database:
+- os-block-storage:
 - os-block-storage-api:
 - os-block-storage-scheduler:
-- os-block-storage-worker:
-- os-block-storage:
+- os-block-storage-volume:
+- os-client:
+- os-compute-api:
 - os-compute-api-ec2:
 - os-compute-api-metadata:
 - os-compute-api-os-compute:
-- os-compute-api:
 - os-compute-cert:
+- os-compute-conductor:
 - os-compute-scheduler:
+- os-compute-setup:
 - os-compute-vncproxy:
 - os-compute-worker:
 - os-dashboard:
-- os-identity-api-admin:
-- os-identity-api:
 - os-identity:
-- os-identity:
+- os-image:
 - os-image-api:
 - os-image-registry:
-- os-image:
-- os-image:
+- os-image-upload:
+- os-telemetry-agent-central:
+- os-telemetry-agent-compute:
+- os-telemetry-api:
+- os-telemetry-collector:
 - os-network:
-#- os-object-storage-account:
-#- os-object-storage-container:
-#- os-object-storage-management:
-#- os-object-storage-object:
-#- os-object-storage-proxy:
-#- os-object-storage:
+- os-network-server:
+- os-network-l3-agent:
+- os-network-dhcp-agent:
+- os-network-metadata-agent:
+- os-network-openvswitch:
+- os-object-storage:
+- os-object-storage-account:
+- os-object-storage-container:
+- os-object-storage-management:
+- os-object-storage-object:
+- os-object-storage-proxy:
 
 environments:
-- opstenv01:
-
-data bags:
+- separated:
 
 nodes:
-- 10.200.9.82:
-    run_list: role[allinone-compute]
-    options: -N opstchef-all -x root -E opstenv01 -i ~/.ssh/id_rsa-non
-    
-
-# - ubuntu2-1204.vm:
-#     run_list: role[os-ops-messaging],role[os-ops-database],role[os-identity],role[os-image]
-#     options: -i ~/.ssh/mray.pem -x mray --sudo -E example
+- 10.200.10.46:
+    run_list: role[os-compute-single-controller]
+    options: -N opstall01 -E separated --sudo -x thirai
+- 10.200.10.47:
+    run_list: role[os-compute-worker]
+    options: -N opstall02 -E separated --sudo -x thirai
+- 10.200.10.48:
+    run_list: role[os-compute-worker]
+    options: -N opstall03 -E separated --sudo -x thirai

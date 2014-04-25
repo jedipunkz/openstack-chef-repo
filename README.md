@@ -1,14 +1,14 @@
 # Description #
 
-This repository contains examples of the roles, environments and other supporting files for deploying an OpenStack **Grizzly** reference architecture using Chef. This currently includes the 7 OpenStack core projects: Compute, Dashboard, Identity, Image, Network, Object and Block Storage.
+This repository contains examples of the roles, environments and other supporting files for deploying an OpenStack **Icehouse** reference architecture using Chef. This currently includes all OpenStack core projects: Compute, Dashboard, Identity, Image, Network, Object Storage, Block Storage, Telemetry and Orchestration.
 
-Development of the latest Stable release will continue on the `master` branch and releases tagged with `7.0.X`. Once development starts against OpenStack `master` or `havana`, this branch will move to `grizzly` and the appropriate branches will continue development.
+Development of the latest Stable release will continue on the `master` branch and releases tagged with `9.0.X`. Once development starts against OpenStack `master` or `juno`, this branch will move to `stable/icehouse` and the appropriate branches will continue development.
 
 The documentation has been moved to the https://github.com/mattray/chef-docs repository for merging to https://github.com/opscode/chef-docs and eventual release to https://docs.opscode.com. Instructions for building the docs are included in the repository. There is additional documentation on the [OpenStack wiki](https://wiki.openstack.org/wiki/Chef/GettingStarted).
 
 # Usage #
 
-This repository uses Berkshelf (https://berkshelf.com) to manage downloading all of the proper cookbook versions, whether from Git or from the Opscode Community site (https://community.opscode.com). The preference is to eventually upstream all cookbook dependencies to the Opscode Community site. The [Berksfile](Berksfile) lists the current dependencies.
+This repository uses Berkshelf (https://berkshelf.com) to manage downloading all of the proper cookbook versions, whether from Git or from the Opscode Community site (https://community.opscode.com). The preference is to eventually upstream all cookbook dependencies to the Opscode Community site. The [Berksfile](Berksfile) lists the current dependencies. Note that berks will resolve version requirements and dependencies on first run and store these in Berksfile.lock. If new cookbooks become available you can run `berks update` to update the references in Berksfile.lock. Berksfile.lock will be included in stable branches to provide a known good set of dependencies. Berksfile.lock will not be included in development branches to encourage development against the latest cookbooks.
 
 There is a Spiceweasel (http://bit.ly/spcwsl) [infrastructure.yml](infrastructure.yml) manifest documenting all the roles and environments required to deploy OpenStack.
 
@@ -23,10 +23,51 @@ To actually deploy the repository to your Chef server, run the following command
 ```
 spiceweasel -e infrastructure.yml
 ```
+# Databags #
+
+You need to have some databags when you run the stackforge without the developer_mode -> true.
+
+You need four databags : user_passwords, db_passwords, service_passwords, secrets
+
+Each data bag need the following item to be created.
+
+user_passwords
+  ITEM example :    {"id" : "admin", "admin" : "mypass"}
+    - admin
+    - guest
+
+db_passwords
+  ITEM example :    {"id" : "nova", "nova" : "mypass"}
+
+    - nova
+    - horizon
+    - keystone
+    - glance
+    - ceilometer
+    - neutron
+    - cinder
+    - heat
+    - dash
+
+service_passwords
+  ITEM example :    {"id" : "openstack-image", "openstack-image" : "mypass"}
+
+    - openstack-image
+    - openstack-compute
+    - openstack-block-storage
+    - openstack-orchestration
+    - openstack-network
+    - rbd
+
+secrets
+  ITEM example : {"id" : "openstack_identity_bootstrap_token", "openstack_identity_bootstrap_token" : "mytoken"}
+
+    - openstack_identity_bootstrap_token
+    - neutron_metadata_secret
 
 # Cookbooks #
 
-The cookbooks have been designed and written in such a way that they can be used to deploy individual service components on _any_ of the nodes in the infrastructure; in short they can be used for single node 'all-in-one' installs (for testing), right up to multi/many node production installs. In order to achieve this flexibility, they are configured by attributes which may be used to override search. Chef 10 or later is currently required, but the intention is to [move to Chef 11 with the `havana` release](https://bugs.launchpad.net/openstack-chef/+bug/1183540) to take advantage of features such as [partial search](http://docs.opscode.com/essentials_search_partial.html). Ruby 1.9.x is considered the minimum supported version of Ruby as well. Most users of this repository test with the full-stack Chef 11 client and a Chef server (Chef Solo is not explicity supported).
+The cookbooks have been designed and written in such a way that they can be used to deploy individual service components on _any_ of the nodes in the infrastructure; in short they can be used for single node 'all-in-one' installs (for testing), right up to multi/many node production installs. In order to achieve this flexibility, they are configured by attributes which may be used to override search. Chef 11 or later is currently required. Ruby 1.9.x is considered the minimum supported version of Ruby as well. Most users of this repository test with the full-stack Chef 11 client and a Chef server (Chef Solo is not explicity supported).
 
 Each of the OpenStack services has its own cookbook and will eventually be available on the Chef Community site.
 
@@ -72,13 +113,20 @@ http://github.com/stackforge/cookbook-openstack-object-storage/
 
 There is further documentation in the [OpenStack Object Storage cookbook README](http://github.com/stackforge/cookbook-openstack-object-storage/).
 
+# Testing #
+
+Please refer to the [TESTING.md](TESTING.md) for instructions for testing the repository and cookbooks with Vagrant or Vagabond.
+
 # License and Author #
 
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author**           | Matt Ray (<matt@opscode.com>)            |
+| **Author**           | Jay Pipes (<jaypipes@gmail.com>)         |
+| **Author**           | Chen Zhiwei (<zhiwchen@cn.ibm.com>)      |
 |                      |                                          |
 | **Copyright**        | Copyright (c) 2011-2013 Opscode, Inc.    |
+| **Copyright**        | Copyright (c) 2014 IBM, Corp.            |
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

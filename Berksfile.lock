@@ -1,0 +1,147 @@
+{
+  "sources": {
+    "apache2": {
+      "locked_version": "1.9.6"
+    },
+    "apt": {
+      "locked_version": "2.3.8"
+    },
+    "aws": {
+      "locked_version": "2.1.1"
+    },
+    "build-essential": {
+      "locked_version": "1.4.2"
+    },
+    "database": {
+      "locked_version": "2.0.0"
+    },
+    "erlang": {
+      "locked_version": "1.4.2"
+    },
+    "memcached": {
+      "locked_version": "1.7.2"
+    },
+    "mysql": {
+      "locked_version": "4.1.2"
+    },
+    "openssl": {
+      "locked_version": "1.1.0"
+    },
+    "postgresql": {
+      "locked_version": "3.3.4"
+    },
+    "python": {
+      "locked_version": "1.4.6"
+    },
+    "rabbitmq": {
+      "locked_version": "3.0.4"
+    },
+    "xfs": {
+      "locked_version": "1.1.0"
+    },
+    "yum": {
+      "locked_version": "3.1.4"
+    },
+    "selinux": {
+      "locked_version": "0.7.2"
+    },
+    "yum-epel": {
+      "locked_version": "0.3.4"
+    },
+    "statsd": {
+      "locked_version": "0.1.6",
+      "git": "git://github.com/att-cloud/cookbook-statsd.git",
+      "ref": "d3298ae4ec4a6d8cc2ca166f0688a92753ced338"
+    },
+    "openstack-block-storage": {
+      "locked_version": "9.1.0",
+      "git": "git://github.com/stackforge/cookbook-openstack-block-storage.git",
+      "ref": "e5beee63c16ceb3499aaee513d368104684f0412"
+    },
+    "openstack-common": {
+      "locked_version": "9.1.1",
+      "git": "git://github.com/stackforge/cookbook-openstack-common.git",
+      "ref": "f121e3906003e583878e88540994098b25d50017"
+    },
+    "openstack-compute": {
+      "locked_version": "9.0.0",
+      "git": "git://github.com/stackforge/cookbook-openstack-compute.git",
+      "ref": "f0d25d36c011091283dcaf527311b80030f15784"
+    },
+    "openstack-dashboard": {
+      "locked_version": "9.0.1",
+      "git": "git://github.com/stackforge/cookbook-openstack-dashboard.git",
+      "ref": "66cae106146ef8d04b6afbf16c968127029ec67f"
+    },
+    "openstack-identity": {
+      "locked_version": "9.1.0",
+      "git": "git://github.com/stackforge/cookbook-openstack-identity.git",
+      "ref": "5a9125af796a635770efef1e507de10b1e08ccfa"
+    },
+    "openstack-image": {
+      "locked_version": "9.0.0",
+      "git": "git://github.com/stackforge/cookbook-openstack-image.git",
+      "ref": "2e76e7ba21c332e4b50457a9c1a5621e3bf09c92"
+    },
+    "openstack-network": {
+      "locked_version": "9.0.0",
+      "git": "git://github.com/stackforge/cookbook-openstack-network.git",
+      "ref": "3e5e74c5e27e602f364e0e8ee80cceb83c287f27"
+    },
+    "openstack-object-storage": {
+      "locked_version": "9.0.0",
+      "git": "git://github.com/stackforge/cookbook-openstack-object-storage.git",
+      "ref": "e876b83cad14c2b8b10e0b44045f28146973af5c"
+    },
+    "openstack-ops-database": {
+      "locked_version": "9.0.1",
+      "git": "git://github.com/stackforge/cookbook-openstack-ops-database.git",
+      "ref": "3f54632f1121d525b82be141c4ec586722ecf008"
+    },
+    "openstack-ops-messaging": {
+      "locked_version": "9.0.1",
+      "git": "git://github.com/stackforge/cookbook-openstack-ops-messaging.git",
+      "ref": "1f00b742dfd6185978300fd18acda7d8da8333eb"
+    },
+    "openstack-orchestration": {
+      "locked_version": "9.1.0",
+      "git": "git://github.com/stackforge/cookbook-openstack-orchestration.git",
+      "ref": "ea9b5d3632008ce68819525f426b6be896604f7b"
+    },
+    "openstack-telemetry": {
+      "locked_version": "9.1.0",
+      "git": "git://github.com/stackforge/cookbook-openstack-telemetry.git",
+      "ref": "1468086891ed2807868bfaaa900b46b88bda23a4"
+    },
+    "iptables": {
+      "locked_version": "0.12.0"
+    },
+    "logrotate": {
+      "locked_version": "1.5.0"
+    },
+    "pacman": {
+      "locked_version": "1.1.1"
+    },
+    "yum-erlang_solutions": {
+      "locked_version": "0.2.0"
+    },
+    "runit": {
+      "locked_version": "1.5.10"
+    },
+    "homebrew": {
+      "locked_version": "1.5.4"
+    },
+    "windows": {
+      "locked_version": "1.30.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.5"
+    },
+    "git": {
+      "locked_version": "4.0.0"
+    },
+    "dmg": {
+      "locked_version": "2.2.0"
+    }
+  }
+}

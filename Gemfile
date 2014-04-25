@@ -1,5 +1,7 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem "chef", "~> 10.18.2"
-gem "berkshelf", "~> 1.4.3"
-gem "spiceweasel", "~> 2.2.0"
+gem "chef", "~> 11.6.2"
+gem "json", "<= 1.7.7" # chef dependency
+gem "knife-block", "~> 0.0.6"
+gem "spiceweasel", "~> 2.6.0"
+gem "berkshelf", "~> 2.0.10"

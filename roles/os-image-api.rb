@@ -4,5 +4,3 @@ run_list(
   "role[os-base]",
   "recipe[openstack-image::api]"
   )
-
-#  "recipe[openstack-image::db]",

@@ -1,5 +1,5 @@
-name "os-compute-single-controller"
-description "Roll-up role for all of the OpenStack Compute services on a single, non-HA controller."
+name "os-compute-single-controller-no-network"
+description "Roll-up role for all of the OpenStack Compute services on a single, non-HA controller, minus any network related roles"
 run_list(
   "role[os-base]",
   "role[os-ops-database]",
@@ -7,7 +7,6 @@ run_list(
   "role[os-ops-messaging]",
   "role[os-identity]",
   "role[os-image]",
-  "role[os-network]",
   "role[os-compute-setup]",
   "role[os-compute-conductor]",
   "role[os-compute-scheduler]",
